@@ -135,7 +135,8 @@ class IncidenciaController extends AbstractController
     public function verIncidencias(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
-        $incidencias = $this->entityManager->getRepository(Incidencia::class)->findAll();
+        $incidencias = $this->entityManager->getRepository(Incidencia::class)
+        ->findBy([], ['fecha' => 'DESC']);
         return $this->render('/incidencia/index.html.twig', [
             'incidencias' => $incidencias,
         ]);

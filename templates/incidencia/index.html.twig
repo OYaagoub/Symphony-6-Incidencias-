@@ -15,7 +15,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {% for incidencia in incidencias %}
         <a href="{{ path('ver_incidencia', {'id': incidencia.id}) }}" class="block p-4 border rounded-md shadow-md mb-4 hover:bg-gray-100">
-            <h3 class="text-blue-500 hover:underline">{{ incidencia.titulo }}</h3>
+            <h3 class="text-blue-500 hover:underline">{{ incidencia.titulo }} - {{ incidencia.fecha|date('Y-m-d H:i:s') }}</h3>
             <!-- Add other details as needed -->
         </a>
     {% endfor %}
