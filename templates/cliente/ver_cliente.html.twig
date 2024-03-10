@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+<title>{{ cliente.nombre }} {{ cliente.apellidos }}</title>
+
+{% endblock %}
+{% block content %}
+	
+  <div class="max-w-2xl mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
+        <h1 class="text-2xl font-bold mb-4">{{ cliente.nombre }} {{ cliente.apellidos }}</h1>
+        <p class="text-gray-700 mb-2">Teléfono: {{ cliente.tel }}</p>
+        <p class="text-gray-700 mb-4">Dirección: {{ cliente.direccion }}</p>
+
+        <h2 class="text-xl font-bold mb-2">Incidencias</h2>
+        {% if cliente.incidencia is not empty %}
+            <ul>
+                {% for incidencia in cliente.incidencia %}
+                    <li class="mb-2">
+                        {{ incidencia.titulo }} -
+                        <a href="{{ path('ver_incidencia', {'id': incidencia.id}) }}" class="text-blue-500">Ver</a> |
+                        <a href="{{ path('editar_incidencia', {'clienteId': cliente.id, 'id': incidencia.id}) }}" class="text-yellow-500">Editar</a> |
+                        <a href="#" class="checkremove text-red-500" data-url="I,{{ incidencia.id }}" >Borrar</a>
+                        {# {{ path('borrar_incidencia', {'id': incidencia.id}) }} #}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-700">No hay incidencias para este cliente.</p>
+        {% endif %}
+    </div>
+<a href="{{ path('crear_incidencia', {'clienteId': cliente.id}) }}" class="text-blue-500">Crear incidenica</a> 
+{% endblock %}

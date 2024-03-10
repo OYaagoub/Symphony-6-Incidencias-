@@ -1,0 +1,40 @@
+
+
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+        </a>
+        <div class="flex items-center space-x-6 rtl:space-x-reverse">
+            {% if app.user %}
+        <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/uploads/fotos/{{ app.user.foto }}" class="h-8" alt="Flowbite Logo" />
+            
+        </a>
+            <span  class="text-sm  text-gray-500 dark:text-white hover:underline">Bienvenido, {{ app.user.nombre }}</span>
+            <a href="{{ path('app_logout') }}" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Cerrar sesión</a>
+            
+            {% else %}
+            <a href="{{ path('app_login') }}" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% if app.user %}
+<nav class="bg-gray-50 dark:bg-gray-700">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
+        <div class="flex items-center">
+            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                <li>
+                    <a href="{{ path('app_cliente') }}" class="text-gray-900 dark:text-white hover:underline" aria-current="page">clientes</a>
+                    <a href="{{ path('ver_incidencias') }}" class="text-gray-900 dark:text-white hover:underline ml-3" aria-current="page">incidencias</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+{% endif %}

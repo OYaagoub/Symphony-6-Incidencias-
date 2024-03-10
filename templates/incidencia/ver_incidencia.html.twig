@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+<title>{{ incidencia.titulo }}</title>
+
+{% endblock %}
+
+{% block content %}
+	
+<div class="bg-gray-100 p-6 rounded-md shadow-md mx-auto max-w-md">
+    <h1 class="text-2xl font-bold mb-4">{{ incidencia.titulo }}</h1>
+
+    <div>
+        <p class="text-gray-600 mb-2"><span class="font-semibold">Fecha:</span> {{ incidencia.fecha|date('Y-m-d H:i:s') }}</p>
+        <p class="text-gray-600 mb-2"><span class="font-semibold">Estado:</span> {{ incidencia.estado }}</p>
+    </div>
+
+    <div class="mt-4">
+        <h2 class="text-lg font-semibold mb-2">Cliente</h2>
+        <p class="text-gray-600 mb-2"><span class="font-semibold">Nombre:</span> {{ incidencia.cliente.nombre }}</p>
+        <p class="text-gray-600 mb-2"><span class="font-semibold">Teléfono:</span> {{ incidencia.cliente.tel }}</p>
+    </div>
+
+    <div class="mt-4">
+        <h2 class="text-lg font-semibold mb-2">Usuario que creó la incidencia</h2>
+        <p class="text-gray-600 mb-2"><span class="font-semibold">Nombre:</span> {{ incidencia.user.nombre }}</p>
+        <p class="text-gray-600"><span class="font-semibold">Email:</span> {{ incidencia.user.email }}</p>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

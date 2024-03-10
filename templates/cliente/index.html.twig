@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+<title>istado de Clientes</title>
+
+{% endblock %}
+{% block content %}
+	
+ <h1 class="text-2xl font-bold mb-4">Listado de Clientes
+ <a href="{{ path('crear_cliente') }}" class="font-medium text-white  hover:underline bg-blue-400 p-3 rounded">Nuevo Cliente</a>
+ </h1>
+
+    {% for cliente in clientes %}
+        <div class="border p-4 mb-4 flex justify-between items-center">
+            <a href="{{ path('ver_cliente', {'id': cliente.id}) }}" class="text-blue-600 hover:underline">
+                {{ cliente.nombre }} 
+            </a>
+            <a href="#" data-url="C,{{ cliente.id }}" class="checkremove text-red-600 hover:underline " >Borrar</a>
+            {# {{ path('borrar_cliente', {'id': cliente.id}) }} #}
+        </div>
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

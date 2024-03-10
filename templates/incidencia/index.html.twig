@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+<title>Listado de Incidencias </title>
+
+{% endblock %}
+
+{% block content %}
+ 
+<h1 class="text-2xl font-bold mb-4">Listado de Incidencias
+<a href="{{ path('crear_al_incidencias') }}" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ">Crear Nueva Incidencia</a>
+
+</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for incidencia in incidencias %}
+        <a href="{{ path('ver_incidencia', {'id': incidencia.id}) }}" class="block p-4 border rounded-md shadow-md mb-4 hover:bg-gray-100">
+            <h3 class="text-blue-500 hover:underline">{{ incidencia.titulo }}</h3>
+            <!-- Add other details as needed -->
+        </a>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

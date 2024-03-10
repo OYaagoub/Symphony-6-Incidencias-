@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+<title>Crear Nueva Incidencia</title>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Crear Incidencia</h1>
+
+        <form action="{{ path('crear_incidencia', {'clienteId': cliente.id}) }}" method="post" class="max-w-md mx-auto">
+            {{ form_start(form) }}
+            
+            <div class="mb-4">
+                {{ form_label(form.titulo, 'Título', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                {{ form_widget(form.titulo, {'attr': {'class': 'w-full px-3 py-2 border rounded-md'}}) }}
+            </div>
+
+            
+
+            <div class="mb-4">
+                {{ form_label(form.estado, 'Estado', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                {{ form_widget(form.estado, {'attr': {'class': 'w-full px-3 py-2 border rounded-md'}}) }}
+            </div>
+
+            <!-- Agrega aquí los otros campos del formulario -->
+
+            <div class="mt-6">
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Guardar</button>
+            </div>
+
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}
